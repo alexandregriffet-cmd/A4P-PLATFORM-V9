@@ -1,0 +1,22 @@
+<!doctype html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Rapport staff • A4P</title><link rel='stylesheet' href='css/styles.css'><style>@media print{.noprint{display:none}.shell{max-width:none;padding:0}.card,.topbar{box-shadow:none}}</style></head><body>
+<div class='shell'>
+<div class='topbar noprint'><div class='brand'><img src='assets/logo-a4p.png'><div><h1>Rapport staff PDF</h1><p>Version imprimable</p></div></div><div class='nav'><button class='btn' onclick='window.print()'>Exporter en PDF</button><a class='btn secondary' href='dashboard.html'>Retour dashboard</a></div></div>
+<div class='card' style='margin-top:18px'>
+  <h2 style='color:#173a63'>Synthèse staff automatique</h2>
+  <div id='reportContent'></div>
+</div>
+</div>
+<script src='js/config.js'></script><script src='js/app.js'></script>
+<script>
+const s = teamSummary('team_u18');
+const strongest = Object.entries(s.dimensions).sort((a,b)=>b[1]-a[1])[0];
+const weakest = Object.entries(s.dimensions).sort((a,b)=>a[1]-b[1])[0];
+document.getElementById('reportContent').innerHTML = `
+<p><strong>Équipe :</strong> U18</p>
+<p><strong>Score mental moyen :</strong> ${s.score}/100</p>
+<p><strong>Dimension forte :</strong> ${strongest[0]} (${strongest[1]})</p>
+<p><strong>Dimension fragile :</strong> ${weakest[0]} (${weakest[1]})</p>
+<p><strong>Alertes :</strong> ${s.alerts}</p>
+<p>Lecture staff : l'équipe montre une capacité d'engagement intéressante, mais la qualité de régulation émotionnelle reste l'axe prioritaire. Le travail recommandé porte sur la routine pré-compétitive, la récupération émotionnelle post-erreur et l'alignement coach-joueur sur les indicateurs de stabilité mentale.</p>`;
+</script></body></html>

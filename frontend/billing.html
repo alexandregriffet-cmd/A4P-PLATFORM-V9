@@ -1,0 +1,15 @@
+<!doctype html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Abonnements • A4P</title><link rel='stylesheet' href='css/styles.css'></head><body><div class='shell'>
+<div class='topbar'><div class='brand'><img src='assets/logo-a4p.png'><div><h1>Abonnements clubs</h1><p>Stripe Checkout prêt à connecter</p></div></div><div class='nav'><a class='btn secondary' href='index.html'>Accueil</a></div></div>
+<div class='grid grid-3' style='margin-top:18px' id='plans'></div>
+</div>
+<script src='js/config.js'></script><script src='js/app.js'></script>
+<script>
+const root=document.getElementById('plans');
+window.A4P_CONFIG.plans.forEach(plan=>{
+  const div=document.createElement('div');
+  div.className='card';
+  div.innerHTML=`<span class='pill'>${plan.teams}</span><h3>${plan.name}</h3><div class='kpi'>${plan.price}</div><p class='notice'>Flux de paiement Stripe Checkout à brancher avec tes clés serveur.</p><a class='btn' href='${createCheckoutLink(plan.id)}'>Choisir ${plan.name}</a>`;
+  root.appendChild(div);
+});
+</script></body></html>
